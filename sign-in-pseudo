@@ -1,0 +1,67 @@
+Variables:
+email = ""
+confirmEmail = false
+password = ""
+confirmPassword = false
+
+// When the 'Email Input' text changes
+Function onEmailInputChange():
+  email = Get text from 'Email Input'
+
+// When the 'Password Input' text changes
+Function onPasswordInputChange():
+  password = Get text from 'Password Input'
+
+// When the 'Sign Up' button is clicked
+Function onSignUpClick():
+  if email is not empty and password is not empty:
+    if 'Email Input' text is equal to 'Email Input2' text:
+      confirmEmail = true
+    else:
+      Display error message "Emails do not match!"
+    
+    if 'Password Input' text is equal to 'Password Input2' text:
+      confirmPassword = true
+    else:
+      Display error message "Passwords do not match!"
+    
+    if confirmEmail and confirmPassword:
+      Attempt to create new user with email and password
+      if error:
+        Display error message
+      else:
+        Display success message
+        Clear email and password variables
+    else:
+      Display error message "Please check your email or password!"
+  else:
+    Display error message "Email or password cannot be empty!"
+
+// When the 'Log In' button is clicked
+Function onLogInClick():
+  if email is not empty and password is not empty:
+    Attempt to sign in user with email and password
+    if error:
+      Display error message
+    else:
+      Check if the user's email is verified
+      if not verified:
+        Display error message "Please verify your email!"
+      else:
+        Clear email and password variables
+        Navigate to the user's profile page
+  else:
+    Display error message "Email or password cannot be empty!"
+
+// When the 'LogIn1' button is clicked (Firebase sign in)
+Function onFirebaseLogInClick():
+  Attempt to sign in user with email and password
+  if error:
+    Display error message
+  else:
+    Check if the user's email is verified
+    if not verified:
+      Display error message "Please verify your email!"
+    else:
+      Clear email and password variables
+      Navigate to the user's profile page
