@@ -1,0 +1,19 @@
+// When the 'Sign Out' button is clicked
+Function onSignOutClick():
+  Attempt to sign out from Firebase
+  If there is an error:
+    Set 'ErrorLabel' text to the error message
+  Else:
+    Navigate to the 'sign up' screen
+
+// When the 'backButton' is clicked
+Function onBackButtonClick():
+  Navigate to the 'profile' screen
+
+// When the 'Reset' button is clicked
+Function onResetClick():
+  Attempt to reset password using the email stored in 'app variable session email'
+  If there is an error:
+    Set 'ErrorLabel' text to the error message
+  Else:
+    Set 'ErrorLabel' text to "A Password reset email has been sent to " + app variable session email
