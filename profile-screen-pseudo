@@ -1,0 +1,49 @@
+// Global Variables
+userName = ""
+userPhotoUrl = ""
+userEmail = ""
+userUID = ""
+photoFromCamera = ""
+
+// When the profile screen is initialized
+Function onProfileScreenInitialize():
+  Set userName to the user's display name from Firebase
+  Set userPhotoUrl to the user's photo URL from Firebase
+  Set userEmail to the user's email from Firebase
+  Set userUID to the user's UID from Firebase
+  Update the profile screen with userName, userPhotoUrl, and userEmail
+
+// When the 'Change Photo' button is clicked
+Function onChangePhotoClick():
+  Open the photo picker
+  If a photo is picked:
+    Set photoFromCamera to the picked photo
+    Upload photoFromCamera to Firebase Storage under 'userUID/profile.jpg'
+    On successful upload:
+      Get the download URL of the uploaded photo
+      Set the user's photo URL in Firebase Authentication to the download URL
+      Update the profile photo on the profile screen with the new photo
+    On error during upload:
+      Display the error message
+
+// When the 'Log Out' button is clicked
+Function onLogOutClick():
+  Log out from Firebase
+  Navigate to the login screen
+
+// When the 'Edit Profile' button is clicked
+Function onEditProfileClick():
+  Open the 'Edit Profile' screen
+  Populate the edit fields with the current userName, userEmail, and userPhotoUrl
+
+// When the 'Save Profile' button is clicked on the 'Edit Profile' screen
+Function onSaveProfileClick():
+  Get the input values for the new user name and email
+  If the new user name is not empty:
+    Set the user's display name in Firebase Authentication to the new user name
+    Update the userName variable and the name display on the profile screen
+  If the new email is not empty and different from the current email:
+    Update the user's email in Firebase Authentication to the new email
+    Send an email verification to the new email
+    Update the userEmail variable and the email display on the profile screen
+  Navigate back to the profile screen
